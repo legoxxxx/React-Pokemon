@@ -1,19 +1,22 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import Menu from './Componentes/Menu'
-import Inicio from './Componentes/Inicio'
 import Pokemon from './Componentes/Pokemon'
+import Pokemones from './Componentes/Pokemones'
+import PokemonDetalle from './Componentes/PokemonDetalle'
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import StateContextProvider from './Context/StateContext'
 
-function App() {
 
+function App() {
   return (<>
     <BrowserRouter>
       {<StateContextProvider>
         <Menu />
-        <Pokemon />
         <Routes>
-          <Route path="/" element={<Inicio />} />
+          <Route path="/" element={<Pokemones />} />
+          <Route path="/pokemon" element={<Pokemon />} />
+          <Route path="/pokemon/:id" element={<PokemonDetalle />} />
         </Routes>
       </StateContextProvider>}
     </BrowserRouter>
