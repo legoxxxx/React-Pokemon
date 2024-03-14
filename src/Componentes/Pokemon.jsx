@@ -8,68 +8,56 @@ const Pokemon = () => {
 
     const { pokemones, setPokemones } = useContext(StateContex);
 
-    const datos = async () => {
-        const datosApiPokemones = await fetchPokemones();
-        setPokemones(datosApiPokemones);
+    const datos = async (id) => {
+        const datosApiPokemones = await fetchPokemones(id);
         console.log(datosApiPokemones);
-    }
-
-
-    useEffect(() => {
-        datos();
-    }, []);
+        return datosApiPokemones;
+      };
+      
+      useEffect(() => {
+        const fetchPokemons = async () => {
+          let pokemones = [];
+          for (let i = 1; i <= 20; i++) {
+            const pokemonData = await datos(i);
+            pokemones = [...pokemones, pokemonData]; // Acumula los datos de cada Pokémon
+          }
+          setPokemones(pokemones); // Almacena el array completo de datos
+        };
+      
+        fetchPokemons();
+      }, []);
+      
 
     return (
         <div>
             <h1>POKEMONES</h1>
 
-            <section>
+            {/* <section>
                 {pokemones.map((item, i) => (
                     <ul key={i}>
-                        <li>{item.name}</li>
+                        <li>ID: {item.id} {item.name}
+                        <img src={item.sprites.other.dream_world.front_default} />
+                        </li>
                     </ul>
                 ))}
-            </section>
+            </section> */}
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+{pokemones.map((item ,i)=>(
+<div key={i} className="bg-gradient-to-r from-gray-200 to-gray-700 border-amber-950">
                 <figure className="relative max-w-sm transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0">
-                    <a href="#">
-                        <img className="rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/content-gallery-3.png" alt="image description" />
-                    </a>
+                    <p>{item.id} {item.name}</p>
+                    <a href="#"><img className="rounded-lg object-cover h-100 w-100" src={item.sprites.other.dream_world.front_default} /></a>
                     <figcaption className="absolute px-4 text-lg text-white bottom-6">
                         <p>Do you want to get notified when a new component is added to Flowbite?</p>
                     </figcaption>
                 </figure>
-
-                <figure className="relative max-w-sm transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0">
-                    <a href="#">
-                        <img className="rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/content-gallery-3.png" alt="image description" />
-                    </a>
-                    <figcaption className="absolute px-4 text-lg text-white bottom-6">
-                        <p>Do you want to get notified when a new component is added to Flowbite?</p>
-                    </figcaption>
-                </figure>
-
-                <figure className="relative max-w-sm transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0">
-                    <a href="#">
-                        <img className="rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/content-gallery-3.png" alt="image description" />
-                    </a>
-                    <figcaption className="absolute px-4 text-lg text-white bottom-6">
-                        <p>Do you want to get notified when a new component is added to Flowbite?</p>
-                    </figcaption>
-                </figure>
-
-                <figure className="relative max-w-sm transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0">
-                    <a href="#">
-                        <img className="rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/content-gallery-3.png" alt="image description" />
-                    </a>
-                    <figcaption className="absolute px-4 text-lg text-white bottom-6">
-                        <p>Do you want to get notified when a new component is added to Flowbite?</p>
-                    </figcaption>
-                </figure>
+</div>
+))
+}
 
             </div>
-        </div >
+        </div>
     )
 }
 
