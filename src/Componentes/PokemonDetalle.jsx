@@ -1,8 +1,7 @@
 const PokemonDetalle = () => {
-    return (
-        <div>
-            Detalle
-        </div>
+    return (<>
+        Detalle
+    </>
     )
 }
 
