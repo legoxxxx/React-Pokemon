@@ -20,7 +20,6 @@ const Pokemones = () => {
                 pokemones = [...pokemones, pokeDatos];
             }
             setPokemones(pokemones);
-            //console.log(pokemones);
         };
         poke();
     }, []);

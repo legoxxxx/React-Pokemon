@@ -15,7 +15,6 @@ function App() {
         <Menu />
         <Routes>
           <Route path="/" element={<Pokemones />} />
-          <Route path="/pokemon" element={<Pokemon />} />
           <Route path="/pokemon/:id" element={<PokemonDetalle />} />
         </Routes>
       </StateContextProvider>}
