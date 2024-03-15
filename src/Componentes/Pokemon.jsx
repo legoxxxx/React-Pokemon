@@ -12,11 +12,9 @@ const Pokemon = (props) => {
 
     return (<>
         <div className="rounded-lg self-end bg-gradient-to-r from-indigo-100 from-10% via-sky-100 via-50% to-emerald-100 to-90%">
-            <button type="button" className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-2 py-1text-center me-2">Purple</button>
+            <button type="button" className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-2 py-1text-center me-2">{nombre}</button>
             <figure className="relative max-w-sm transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0">
                 <a href={'pokemon/' + idPokemon}><img src={imagen} className="m-auto rounded-lg object-cover h-100 w-100" /></a>
-                {/* <figcaption className="absolute px-4 text-lg text-white bottom-6">
-                </figcaption> */}
             </figure>
             <button className="mx-2 my-2 text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-1 py-1 text-center me-2 "> # {idPokemon}</button>
         </div>
