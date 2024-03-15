@@ -30,7 +30,7 @@ const Pokemones = () => {
 
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-4 ">
             {pokemones.map((pokemon, i) => (
-                <Pokemon key={i} idPokemon={pokemon.id} nombre={pokemon.name} imagen={pokemon.sprites.other.dream_world.front_default} />
+                <Pokemon  idPokemon={pokemon.id} nombre={pokemon.name} imagen={pokemon.sprites.other.dream_world.front_default} />
             ))}
         </div>
 

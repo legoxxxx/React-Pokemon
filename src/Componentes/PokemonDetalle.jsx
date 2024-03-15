@@ -4,14 +4,13 @@ import { fetchPokemones } from '../Services/FetchApiPokemon'
 import Pokemon from './Pokemon'
 
 const PokemonDetalle = () => {
-    const [ pokemon, setPokemon ] = useState([]);
+    const [pokemon, setPokemon] = useState();
     const { idPokemon } = useParams();
-    //console.log(idPokemon);
 
-    const llamadaPoke = async (id) => {
-        const datosApiPokemones = await fetchPokemones(id);
+    const llamadaPoke = async (idPokemon) => {
+        const datosApiPokemon = await fetchPokemones(idPokemon);
         //console.log(datosApiPokemones);
-        return datosApiPokemones;
+        return datosApiPokemon;
     };
 
     useEffect(() => {
@@ -25,8 +24,11 @@ const PokemonDetalle = () => {
 
     return (
         <>
-            <h1>Detalle del Pokémon {idPokemon}</h1>
-            <Pokemon idPokemon={pokemon.id} nombre={pokemon.name}  imagen={pokemon.sprites.other.dream_world.front_default}/>
+            {
+                pokemon ?
+                    <Pokemon idPokemon={pokemon.id} nombre={pokemon.name} altura={pokemon.height} imagen={pokemon.sprites.other.dream_world.front_default} experienciaBase={pokemon.base_experience} movimientos={pokemon.moves.length} peso={pokemon.weight} formas={pokemon.forms.length} />
+                    : <h1>algo anda mal</h1>
+            }
         </>
     );
 };

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Pokemon = (props) => {
 
-    const { idPokemon, nombre, imagen } = props
+    const { idPokemon, nombre, altura, imagen, experienciaBase, movimientos, peso, formas } = props
 
     useEffect(() => {
         console.log(props);
@@ -19,6 +19,11 @@ const Pokemon = (props) => {
             </Link>
 
         </figure>
+        {altura ? <p>Altura {altura} cms</p> : ''}
+        {experienciaBase ? <p>Experiencia Base: {experienciaBase}</p> : ''}
+        {movimientos ? <p>Movimientos: {movimientos}</p> : ''}
+        {peso ? <p>Peso: {peso} Grs</p> : ''}
+        {formas ? <p>formas : {formas}</p> : ''}
         <button className="mx-2 my-2 text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-1 py-1 text-center me-2 "> # {idPokemon}</button>
     </div>)
 }
